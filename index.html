@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Schnell-AI</title>
+
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/magnific-popup.css">
+
+<link rel="stylesheet" href="css/owl.theme.css">
+<link rel="stylesheet" href="css/owl.carousel.css">
+
+<!-- MAIN CSS -->
+<link rel="stylesheet" href="css/tooplate-style.css">
+
+</head>
+<body>
+
+<!-- PRE LOADER -->
+<div class="preloader">
+     <div class="spinner">
+          <span class="sk-inner-circle"></span>
+     </div>
+</div>
+
+
+<!-- MENU -->
+<div class="navbar custom-navbar navbar-fixed-top" role="navigation">
+     <div class="container">
+
+          <!-- NAVBAR HEADER -->
+          <div class="navbar-header">
+               <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+                    <span class="icon icon-bar"></span>
+               </button>
+               <!-- lOGO -->
+               <a href="index.html" class="navbar-brand">Schnell-AI</a>
+          </div>
+
+          <!-- MENU LINKS -->
+          <div class="collapse navbar-collapse">
+               <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#home" class="smoothScroll">Home</a></li>
+                    <li><a href="#contact" class="smoothScroll">Let's talk</a></li>
+               </ul>
+          </div>
+
+     </div>
+</div>
+
+
+<!-- HOME -->
+<section id="home" class="parallax-section">
+     <div class="overlay"></div>
+
+     <div class="container">
+          <div class="row">
+              <div class="col-md-8 col-sm-12">
+                  <div class="home-text">
+                      <h1>Coming Soon...</h1>
+                      <p1>Share your email for launch updates:</p1>
+                      <form action="php/subscribe.php" method="post">
+                          <input type="email" name="email" placeholder="Enter your email" required style="width: 260px;">
+                          <button type="submit">Subscribe</button>
+                      </form>
+                      <div id="success-message">
+                          <?php
+                          if ($_SERVER["REQUEST_METHOD"] === "POST") {
+                              $email = filter_input(INPUT_POST, "email", FILTER_SANITIZE_EMAIL);
+      
+                              if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                                  $file_path = __DIR__ . "/subscribed_emails.txt";
+      
+                                  // Use the file_put_contents function for simplicity
+                                  if (file_put_contents($file_path, $email . PHP_EOL, FILE_APPEND | LOCK_EX) !== false) {
+                                      echo "Thank you for subscribing!";
+                                  } else {
+                                      // Handle file write error
+                                      echo "Error: Unable to write to the file.";
+                                  }
+                              } else {
+                                  // Handle invalid email address
+                                  echo "Invalid email address.";
+                              }
+                          }
+                          ?>
+                      </div>
+                      <ul class="section-btn">
+                          <a href="#about" class="smoothScroll"><span data-hover="Discover More">Discover More</span></a>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+      
+
+
+
+     <!-- Video -->
+     <video controls autoplay loop muted>
+          <source src="videos/teaser.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+     </video>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="parallax-section">
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-offset-3 col-md-6 col-sm-12">
+                    <div class="section-title">
+                         <h1>Talk to us!</h1>
+                    </div>
+               </div>
+
+               <div class="clearfix"></div>
+
+               <div class="col-md-offset-2 col-md-8 col-sm-12">
+                    <!-- CONTACT FORM HERE -->
+                    <form id="contact-form" action="#" method="get" role="form">
+
+                         <!-- IF MAIL SENT SUCCESSFULLY -->
+                         <h6 class="text-success">Your message has been sent successfully. </h6>
+                         
+                         <!-- IF MAIL SENDING UNSUCCESSFULL -->
+                         <h6 class="text-danger">E-mail must be valid and message must be longer than 1 character.</h6>
+
+                         <div class="col-md-6 col-sm-6">
+                              <input type="text" class="form-control" id="cf-name" name="cf-name" placeholder="Name">
+                         </div>
+
+                         <div class="col-md-6 col-sm-6">
+                              <input type="email" class="form-control" id="cf-email" name="cf-email" placeholder="Email Address">
+                         </div>
+
+                         <div class="col-md-12 col-sm-12">
+                              <input type="text" class="form-control" id="cf-subject" name="subject" placeholder="Subject">
+                              <textarea class="form-control" rows="5" id="cf-message" name="cf-message" placeholder="Message"></textarea>
+                         </div>
+
+                         <div class="col-md-offset-4 col-md-4 col-sm-offset-4 col-sm-4">
+                              <div class="section-btn">
+                                   <button type="submit" class="form-control" id="cf-submit" name="submit"><span data-hover="Send Message">Send Message</span></button>
+                              </div>
+                         </div>
+                    </form>
+               </div>
+
+          </div>
+     </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+     <div class="container">
+          <div class="row">
+
+               <div class="col-md-5 col-sm-6">
+               </div>
+
+               <div class="col-md-4 col-sm-6">
+               </div>
+
+               <div class="col-md-3 col-sm-12">
+                    <h2>Keep in touch</h2>
+                    <p><a href="tel:(415) 312-8002">(415) 312-8002</a></p> 
+                    <p><a href="mailto:info@company.com">info@company.com</a></p> 
+                    <p>299 Fremont St., San Francisco,<br> CA 94105</p> 
+
+               </div>
+
+               <div class="clearfix"></div>
+
+               <div class="col-md-12 col-sm-12">
+                    <div class="copyright-text">
+                         <p>Copyright © 2023 Schnell AI Inc.</p>
+                    </div>
+               </div>
+               
+          </div>
+     </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.parallax.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/magnific-popup-options.js"></script>
+<script src="js/modernizr.custom.js"></script>
+<script src="js/smoothscroll.js"></script>
+<script src="js/custom.js"></script>
+
+</body>
+</html>
